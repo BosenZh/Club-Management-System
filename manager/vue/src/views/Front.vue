@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="front-notice"><i class="el-icon-bell" style="margin-right: 2px"></i>公告：{{ top }}</div>
+    <div class="front-notice"><i class="el-icon-bell" style="margin-right: 2px"></i>Announcement：{{ top }}</div>
     <div class="front-header">
       <div class="front-header-left">
         <img src="@/assets/imgs/logo.png" alt="">
-        <div class="title">Front end</div>
+        <div class="title">Club Management System</div>
       </div>
       <div class="front-header-center">
         <div class="front-header-nav">

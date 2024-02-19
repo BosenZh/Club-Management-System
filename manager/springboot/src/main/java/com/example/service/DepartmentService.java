@@ -1,5 +1,6 @@
 package com.example.service;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.example.common.enums.ResultCodeEnum;
 import com.example.entity.Account;
@@ -14,6 +15,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 
@@ -28,6 +30,7 @@ public class DepartmentService {
     public void add(Department department) {
         if(ObjectUtil.isNotEmpty(department.getClubRepid())){
             Department dbDepartment = departmentMapper.selectByClubRepid(department.getClubRepid());
+            department.setTime(DateUtil.format(new Date(), "yyyy-MM-dd"));
             if(ObjectUtil.isNotEmpty(dbDepartment)){
                 throw new CustomException(ResultCodeEnum.REP_ALREADY_EXIST);
             }

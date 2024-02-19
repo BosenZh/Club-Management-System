@@ -17,6 +17,8 @@ public class Department extends Account implements Serializable {
 
     private String studentName;
 
+    private String time;
+
     @Override
     public Integer getId() {
         return id;
@@ -65,5 +67,13 @@ public class Department extends Account implements Serializable {
 
     public void setStudentName(String studentName) {
         this.studentName = studentName;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }
