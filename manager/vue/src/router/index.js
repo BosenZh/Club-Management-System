@@ -25,6 +25,7 @@ const routes = [
       { path: 'notice', name: 'Notice', meta: { name: 'Announcement' }, component: () => import('../views/manager/Notice') },
       { path: 'student', name: 'student', meta: { name: 'Student Info' }, component: () => import('../views/manager/Student') },
       { path: 'department', name: 'department', meta: { name: 'Club Info' }, component: () => import('../views/manager/Department') },
+      { path: 'application', name: 'Application', meta: { name: 'Application Management' }, component: () => import('../views/manager/Application') },
     ]
   },
   {
@@ -34,6 +35,7 @@ const routes = [
     children: [
       { path: 'home', name: 'Home', meta: { name: 'Homepage' }, component: () => import('../views/front/Home') },
       { path: 'person', name: 'Person', meta: { name: 'Personal info' }, component: () => import('../views/front/Person') },
+      { path: 'departmentDetail', name: 'DepartmentDetail', meta: { name: 'Club info' }, component: () => import('../views/front/DepartmentDetail') },
     ]
   },
   { path: '/login', name: 'Login', meta: { name: 'Login' }, component: () => import('../views/Login.vue') },

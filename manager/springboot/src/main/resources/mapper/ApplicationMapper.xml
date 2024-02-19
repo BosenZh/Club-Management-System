@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.ApplicationMapper">
+
+    <sql id="Base_Column_List">
+        id,student_id,department_id,description,process,status,note
+    </sql>
+
+    <select id="selectAll" resultType="com.example.entity.Application">
+        select application.*, studentinfo.name as studentName, department.clubName as clubName
+        from application
+        LEFT JOIN studentinfo ON application.student_id = studentinfo.id
+        LEFT JOIN department ON application.department_id = department.id
+        <where>
+            <if test="id != null"> and application.id = #{id}</if>
+            <if test="studentId != null"> and application.student_id = #{studentId}</if>
+            <if test="departmentId != null"> and application.department_id = #{departmentId}</if>
+            <if test="description != null"> and application.description = #{description}</if>
+            <if test="process != null"> and application.process = #{process}</if>
+            <if test="status != null"> and application.status = #{status}</if>
+            <if test="note != null"> and application.note = #{note}</if>
+        </where>
+    order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Application">
+        select
+        <include refid="Base_Column_List" />
+        from application
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from application
+        where  id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.Application" useGeneratedKeys="true">
+        insert into application
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="studentId != null">student_id,</if>
+            <if test="departmentId != null">department_id,</if>
+            <if test="description != null">description,</if>
+            <if test="process != null">process,</if>
+            <if test="status != null">status,</if>
+            <if test="note != null">note,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="studentId != null">#{studentId},</if>
+            <if test="departmentId != null">#{departmentId},</if>
+            <if test="description != null">#{description},</if>
+            <if test="process != null">#{process},</if>
+            <if test="status != null">#{status},</if>
+            <if test="note != null">#{note},</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.Application">
+        update application
+        <set>
+            <if test="studentId != null">
+                student_id = #{studentId},
+            </if>
+            <if test="departmentId != null">
+                department_id = #{departmentId},
+            </if>
+            <if test="description != null">
+                description = #{description},
+            </if>
+            <if test="process != null">
+                process = #{process},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="note != null">
+                note = #{note},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

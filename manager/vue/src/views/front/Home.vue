@@ -11,32 +11,17 @@
         <div style="margin: 20px 0 0 0; width: 130px; background-color: #f16f44; height: 30px; line-height: 30px; text-align: center; font-size: 18px; color: white; font-weight: bold; border-radius: 20px">Our Clubs</div>
         <div style="margin-top: 15px">
           <el-row :gutter="20">
-            <el-col :span="5">
-              <img src="@/assets/imgs/CyberCoders.png" alt="" style="width: 85%; height: 196px; border-radius: 50%">
-              <div style="text-align: center; margin-top: 10px; font-size: 16px">{Cyber Coders}</div>
+            <el-col :span="5" v-for="item in departmentData">
+              <img :src="item.logo" alt="" style="width: 100%; height: 196px; border-radius: 50%" @click = "navTo('/front/departmentDetail?id=' + item.id)">
+              <div style="text-align: center; margin-top: 10px; font-size: 16px">{{ item.clubName }}</div>
             </el-col>
-            <el-col :span="5">
-              <img src="@/assets/imgs/CyberCoders.png" alt="" style="width: 85%; height: 196px; border-radius: 50%">
-              <div style="text-align: center; margin-top: 10px; font-size: 16px">{Cyber Coders}</div>
-            </el-col><el-col :span="5">
-            <img src="@/assets/imgs/GastronomeGuild.png" alt="" style="width: 85%; height: 196px; border-radius: 50%">
-            <div style="text-align: center; margin-top: 10px; font-size: 16px">{Gastronome Guild}</div>
-          </el-col><el-col :span="5">
-            <img src="@/assets/imgs/GreenThumbsCollective.png" alt="" style="width: 85%; height: 196px; border-radius: 50%">
-            <div style="text-align: center; margin-top: 10px; font-size: 16px">{Green Thumbs Collective}</div>
-          </el-col><el-col :span="5">
-            <img src="@/assets/imgs/AzureExplorers.png" alt="" style="width: 85%; height: 196px; border-radius: 50%">
-            <div style="text-align: center; margin-top: 10px; font-size: 16px">{Azure Explorers}</div>
-          </el-col><el-col :span="5">
-            <img src="@/assets/imgs/StarGazersSociety.png" alt="" style="width: 85%; height: 196px; border-radius: 50%">
-            <div style="text-align: center; margin-top: 10px; font-size: 16px">{Star Gazers Society}</div>
-          </el-col>
           </el-row>
         </div>
       </div>
     </div>
+    </div>
 
-  </div>
+
 </template>
 
 <script>
@@ -66,6 +51,9 @@ export default {
           this.$message.error(res.msg)
         }
       })
+    },
+    navTo(url){
+      location.href = url
     }
   }
 }

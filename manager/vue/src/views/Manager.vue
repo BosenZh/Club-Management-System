@@ -30,7 +30,7 @@
 
     <div class="manager-main">
       <div class="manager-main-left">
-        <el-menu :default-openeds="['info', 'user']" router style="border: none" :default-active="$route.path">
+        <el-menu :default-openeds="['info', 'management', 'user']" router style="border: none" :default-active="$route.path">
           <el-menu-item index="/home">
             <i class="el-icon-s-home"></i>
             <span slot="title">Homepage</span>
@@ -40,6 +40,13 @@
               <i class="el-icon-menu"></i><span>Info</span>
             </template>
             <el-menu-item index="/notice">Announcement</el-menu-item>
+            <el-menu-item index="/department">Club Info</el-menu-item>
+          </el-submenu>
+          <el-submenu index="management">
+            <template slot="title">
+              <i class="el-icon-menu"></i><span>Club Management</span>
+            </template>
+            <el-menu-item index="/application">Application Management</el-menu-item>
           </el-submenu>
 
           <el-submenu index="user">
